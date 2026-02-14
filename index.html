@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Mane</title>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --soft-cream: #fff0f3;
+            --text-color: #590d22;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: var(--soft-cream);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .page {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        .active { display: block; }
+
+        h1 { font-size: 1.6rem; line-height: 1.8; font-weight: normal; }
+        
+        .btn-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 12px; 
+            margin-top: 30px; 
+        }
+        
+        button {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: var(--primary-pink);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover { background-color: #ff758f; transform: translateY(-2px); }
+        
+        /* The "No" button styling - looks clickable but does nothing */
+        #no-btn {
+            background-color: #a4161a;
+            cursor: default;
+        }
+        #no-btn:hover { transform: none; background-color: #a4161a; }
+
+        .photo-frame {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .photo-frame img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 2px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="here-there-and-everywhere.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="page1" class="page active">
+        <h1>"Let's go all the way tonight<br>No regrets, just love<br>We can dance, until we die<br>You and I, will be young forever"</h1>
+        <button onclick="startExperience()">Enter ❤️</button>
+    </div>
+
+    <div id="page2" class="page">
+        <h1>My dear mane, will you be my valentine?</h1>
+        
+        <div class="photo-frame">
+            <img src="photo1.jpg" alt="Memory 1">
+        </div>
+
+        <div class="btn-container">
+            <button onclick="nextPage(3)">YES</button>
+            <button onclick="nextPage(3)">ABSOLUTELY</button>
+            <button onclick="nextPage(3)">DEFINITELY</button>
+            <button onclick="nextPage(3)">SURELY</button>
+            <button id="no-btn">NO</button>
+        </div>
+    </div>
+
+    <div id="page3" class="page">
+        <div class="photo-frame">
+            <img src="photo2.jpg" alt="Memory 2">
+            <img src="photo3.jpg" alt="Memory 3">
+        </div>
+        
+        <h1 style="font-style: italic; font-size: 1.3rem;">
+            "I want you everywhere<br>
+            And if you are beside me, I know I need never care<br>
+            But to love you is to need you everywhere<br>
+            Knowing that love is to share<br>
+            Each one believing that love never dies<br>
+            Watching your eyes and hoping I'm always there<br>
+            Will be there and everywhere<br>
+            Here, there and everywhere"
+        </h1>
+    </div>
+
+    <script>
+        function startExperience() {
+            const music = document.getElementById('bg-music');
+            music.play();
+            nextPage(2);
+        }
+
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
