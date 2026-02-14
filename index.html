@@ -55,12 +55,10 @@
         
         button:hover { background-color: #ff758f; transform: translateY(-2px); }
         
-        /* The "No" button styling - looks clickable but does nothing */
         #no-btn {
             background-color: #a4161a;
-            cursor: default;
+            cursor: default; /* Makes it look like it's not a button */
         }
-        #no-btn:hover { transform: none; background-color: #a4161a; }
 
         .photo-frame {
             margin: 20px auto;
@@ -84,7 +82,7 @@
 <body>
 
     <audio id="bg-music" loop>
-        <source src="here-there-and-everywhere.mp3" type="audio/mpeg">
+        <source src="Here, There And Everywhere (Remastered 2009).mp3" type="audio/mpeg">
     </audio>
 
     <div id="page1" class="page active">
@@ -96,7 +94,7 @@
         <h1>My dear mane, will you be my valentine?</h1>
         
         <div class="photo-frame">
-            <img src="photo1.jpg" alt="Memory 1">
+            <img src="1770968356032.png" alt="Photo 1">
         </div>
 
         <div class="btn-container">
@@ -104,14 +102,14 @@
             <button onclick="nextPage(3)">ABSOLUTELY</button>
             <button onclick="nextPage(3)">DEFINITELY</button>
             <button onclick="nextPage(3)">SURELY</button>
-            <button id="no-btn">NO</button>
+            <button id="no-btn" onclick="return false;">NO</button>
         </div>
     </div>
 
     <div id="page3" class="page">
         <div class="photo-frame">
-            <img src="photo2.jpg" alt="Memory 2">
-            <img src="photo3.jpg" alt="Memory 3">
+            <img src="1770968286208.png" alt="Photo 2">
+            <img src="1770968266966.png" alt="Photo 3">
         </div>
         
         <h1 style="font-style: italic; font-size: 1.3rem;">
@@ -129,7 +127,7 @@
     <script>
         function startExperience() {
             const music = document.getElementById('bg-music');
-            music.play();
+            music.play().catch(error => console.log("Audio waiting for user."));
             nextPage(2);
         }
 
